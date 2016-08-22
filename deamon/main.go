@@ -26,9 +26,5 @@ func main() {
 		}
 		con.Write([]byte("nihao"))
 		con.Close()
-		//test vscode pull
-		//test22222
-		//test3333
-		//test4444
 	}
 }
