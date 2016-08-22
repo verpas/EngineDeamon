@@ -26,6 +26,5 @@ func main() {
 		}
 		con.Write([]byte("nihao"))
 		con.Close()
-		//111
 	}
 }
