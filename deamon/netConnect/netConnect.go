@@ -4,6 +4,6 @@ import "net"
 
 type ConnectInfo struct {
 	con  net.Conn
-	IP   string
+	ip   string
 	port string
 }

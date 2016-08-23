@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"net"
 	"strings"
+
+	"./netConnect"
 )
 
 var ServiceIpPort = flag.String("ServerIpPort", "", "deamon connect ipport")
@@ -13,6 +15,7 @@ var logPath = flag.String("LogFileDirectory", "log", "Set log path")
 
 func main() {
 	flag.Parse()
+	var MyConnect netConnect.ConnectInfo
 	fmt.Print(*ServiceIpPort, "\n", *logPath)
 	if (*ServiceIpPort) != "" {
 		arr := strings.SplitN((*ServiceIpPort), ":", 3)
