@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"net"
 	"strings"
 
 	"./netConnect"
@@ -22,12 +21,13 @@ func main() {
 		if len(arr) != 2 {
 			panic("ServerIpPort error")
 		}
-		con, err := net.Dial("tcp", *ServiceIpPort)
+		var err error
+		err = MyConnect.Connect(arr[0], arr[1])
 		if err != nil {
 			fmt.Print(err.Error())
 			return
 		}
-		con.Write([]byte("nihao"))
-		con.Close()
+		MyConnect.Write([]byte("nihao"))
+		MyConnect.Close()
 	}
 }
