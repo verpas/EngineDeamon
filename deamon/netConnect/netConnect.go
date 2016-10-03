@@ -35,3 +35,8 @@ func (con *ConnectInfo) Close() (err error) {
 	con.Port = ""
 	return
 }
+func NewMyConnect(IP string, port string) (con *ConnectInfo, err error) {
+	con = new(ConnectInfo)
+	err = con.Connect(IP, port)
+	return
+}

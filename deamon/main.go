@@ -14,7 +14,7 @@ var logPath = flag.String("LogFileDirectory", "log", "Set log path")
 
 func main() {
 	flag.Parse()
-	var MyConnect netConnect.ConnectInfo
+	var MyConnect *netConnect.ConnectInfo
 	fmt.Print(*ServiceIpPort, "\n", *logPath)
 	if (*ServiceIpPort) != "" {
 		arr := strings.SplitN((*ServiceIpPort), ":", 3)
@@ -22,7 +22,7 @@ func main() {
 			panic("ServerIpPort error")
 		}
 		var err error
-		err = MyConnect.Connect(arr[0], arr[1])
+		MyConnect, err = netConnect.NewMyConnect(arr[0], arr[1])
 		if err != nil {
 			fmt.Print(err.Error())
 			return
