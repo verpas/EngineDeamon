@@ -31,15 +31,22 @@ func main() {
 		if err != nil {
 			continue
 		}
+		fmt.Print("fsfdsgfdgfd")
 		readstr := make([]byte, 10000)
-		len, err := con.Read(readstr)
-		str := readstr[0:len]
-		fmt.Print(len, "    ", string(str)+"     "+con.LocalAddr().String()+"\n")
-		len, err = con.Read(readstr)
-		if err != nil {
-			fmt.Print(err.Error())
-			con.Close()
+		for {
+			len, err := con.Read(readstr)
+			fmt.Print("read:", len, string(readstr))
+			str := readstr[0:len]
+			fmt.Print("write:   ", +len, "    ", string(str)+"     "+con.LocalAddr().String()+"\n")
+			len, err = con.Write(str)
+			if err != nil {
+				fmt.Print(err.Error())
+				con.Close()
+				break
+			}
+
 		}
+
 	}
 	ch := make(chan int)
 	go gogogo(ch)
